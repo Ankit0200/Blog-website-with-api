@@ -20,17 +20,18 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+import os
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-na0hr*#qa-n!v9(h*@-u$8#w$ch)obn4yx-clifu@6m1yw(!qu'
-
+# SECRET_KEY = 'django-insecure-na0hr*#qa-n!v9(h*@-u$8#w$ch)obn4yx-clifu@6m1yw(!qu'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh']
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
 
 # Application definition
 
@@ -103,7 +104,11 @@ WSGI_APPLICATION = 'django_authentications.wsgi.application'
 #         'HOST': 'localhost'
 #     }
 # }
-DATABASES['default'] = dj_database_url.parse("postgresql://django_blog_tdm1_user:CSeuCiOouLHcxVxLLL0WoqcfXjt0iZT9@dpg-cpu42phu0jms73eja4p0-a.singapore-postgres.render.com/django_blog_tdm1")
+
+database_url=os.environ.get('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(database_url)
+
+#("postgresql://django_blog_tdm1_user:CSeuCiOouLHcxVxLLL0WoqcfXjt0iZT9@dpg-cpu42phu0jms73eja4p0-a.singapore-postgres.render.com/django_blog_tdm1")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
