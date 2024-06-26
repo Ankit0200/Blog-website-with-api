@@ -6,6 +6,6 @@ djangorestframework_simplejwt==5.3.1
 pandas==2.2.2
 Requests==2.32.3
 psycog
-dj-all-auth
+django_allauth
 django-filter
 gunicorn
