@@ -8,4 +8,4 @@ Requests==2.32.3
 psycog
 dj-all-auth
 django-filter
-
+gunicorn
