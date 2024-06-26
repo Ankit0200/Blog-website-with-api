@@ -5,7 +5,7 @@ djangorestframework==3.15.1
 djangorestframework_simplejwt==5.3.1
 pandas==2.2.2
 Requests==2.32.3
-psycog
+psycopg2
 django_allauth
 django-filter
 gunicorn
