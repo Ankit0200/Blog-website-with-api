@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO LIST</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="{% static 'todo.css' %}">
+</head>
+
+<body>
+<div class="whole-container">
+
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter your task" name="task">
+            <button>Add task</button>
+        </form>
+    </div>
+
+    <div class="list">
+        <ul id="datalist">
+            {% for char in work_list %}
+            <li>
+                <div class='li-fix'><span>{{ char.title }}</span>
+                    <form method="post"><a href="{% url 'delete' id=char.id %}"><img src='{% static "x.svg" %}'></a></form></div>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
+<script>
+    $("ul").on("click", "li", function (bte) {
+  console.log(bte);
+  console.log($(this));
+  if ($(bte.target).is("span")) {
+    $(this).toggleClass("x");
+  }
+});
+</script>
+
+
+</body>
+
+</html>
+
+</body>
+</html>

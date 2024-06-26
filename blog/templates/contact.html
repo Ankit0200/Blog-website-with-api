@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+{% endblock %}
+{% block page_title %} Have anything to Say ?{% endblock %}
+{% block page_subtitle %} Please do. We care about your sentiments.😊{% endblock %}
+
+{% block content %}
+
+    <div class="container d-flex justify-content-center mt-5 mb-5 flex-column align-items-center ">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary fluid" role="alert">
+           {{ message }}
+        </div>
+        {% endfor %}
+  {% endif %}
+
+        <form class="col-lg-6" method="post">
+            {% csrf_token %}
+            <!-- <div class="input-group">
+
+                <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+              </div> -->
+
+            <div class="input-group mt-3 mb-5">
+                <div class="input-group-text"><img src="{% static 'images_blog/card-text.svg' %}"></div>
+                <textarea class="form-control" placeholder="Enter your queries here" name="query"></textarea>
+
+            </div>
+            <div class=" input-group mb-3">
+                <div class="input-group-text"><img src="{% static 'images_blog/envelope.svg' %}"></div>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       name="email"
+                       placeholder="Enter the email where we can respond">
+
+            </div>
+
+            <button type="submit" class="btn btn-success px-3">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

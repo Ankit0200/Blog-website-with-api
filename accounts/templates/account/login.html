@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load allauth %}
+{% load account socialaccount %}
+
+{% load allauth account %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block page_title %}LOGIN{% endblock %}
+{% block page_subtitle %}Read everyday to grow{% endblock %}
+
+
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="card bg-primary col-lg-8 text-black border-0">
+            <form class="p-5" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="my_email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="my_email" aria-describedby="emailHelp" name="email">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="pass" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="pass" name="password">
+                </div>
+
+                <button type="submit" class="btn btn-success px-2">Let me in !</button>
+
+            </form>
+{#            <a class="btn btn-success" href="{% provider_login_url 'google' %}?next=/">Login with Google</a>#}
+
+
+        </div>
+    </div>
+
+{% endblock %}
