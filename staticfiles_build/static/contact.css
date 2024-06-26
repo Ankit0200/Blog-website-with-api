@@ -1,0 +1,60 @@
+
+.my_heading {
+    background-image: url(images_blog/contact.jpg);
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.96;
+    background-blend-mode:darken;
+}
+
+
+.navbar {
+    background: transparent !important;
+    /* Make the navbar transparent */
+}
+
+.navbar .container-fluid {
+    background-image: inherit;
+    /* Inherit the background image */
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+    /* Reset padding to remove white space */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white;
+    /* Set text color to white */
+}
+
+.card{
+    background: transparent !important;
+    color:#e1f2ff;
+    
+}
+
+.container .card{
+    background-image:inherit;
+    background-size: cover;
+    background-position: center;
+    
+
+}
+.card-text svg{
+    font-weight: bolder;
+    background-color: rgb(231, 51, 51);
+    margin-left: 3px;
+    cursor: pointer;
+}
+.social img{
+    width: 40px;
+   
+}
+.social img:hover{
+    background-color:rgb(188, 188, 248);
+    color:white;
+    border-radius: 25px;
+    cursor: pointer;
+}

@@ -9,3 +9,4 @@ psycopg2
 django_allauth
 django-filter
 gunicorn
+cryptography

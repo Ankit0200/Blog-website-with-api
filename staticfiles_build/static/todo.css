@@ -1,0 +1,114 @@
+*{
+    margin:0;
+    pad: 0;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(233, 200, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whole-container{
+    background-color:white;
+    position:relative;
+    min-height:25vh;
+    width: 35vw;;
+    top:-131px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+
+    padding:15px;
+}
+.container{
+    position: relative;
+    left:35px;
+    padding:15px;
+}
+
+input{
+    background-color: rgb(241, 219, 219);
+    padding:10px;
+    height:40px;
+    width: 362px;
+    border-radius: 80px;
+    outline:none;
+    font-size: 15px;
+    border: none;
+
+}
+
+button{
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 30px;
+    color: white;
+    background-color: #d141e1;
+    position:relative;
+    left:-66px;
+    outline: none;
+    border:none;
+}
+
+.list{
+    /* background-color:purple; */
+    position:relative;
+    left:-165px;
+    height: inherit;
+    margin-top:15px;
+
+}
+
+
+img{
+     /* position:absolute;
+    left:400px; */
+    width: 20px;
+    cursor:pointer
+}
+
+img:hover{
+    border-radius:100px;
+    background-color: rgb(210, 200, 200);
+}
+
+.li-fix{
+
+    display: flex;
+    justify-content: space-between;
+    margin:10px 0px;
+
+    width:400px;
+
+
+}
+
+ul{
+    position: relative;
+    left: 137px;
+}
+
+
+.list ul li span{
+     list-style:circle;
+    font-size:20px;
+    font-weight: 500;
+
+
+    margin: 10px 0px;
+}
+ul li{
+    cursor: pointer;
+
+}
+.x{
+
+    background-color: rgb(192, 179, 179);
+    text-decoration: line-through;
+}
+
