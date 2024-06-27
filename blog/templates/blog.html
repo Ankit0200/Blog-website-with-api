@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'blog.css' %}">
-    <style>
-        .my_heading {
-            background-image: url({{ blog.image.url }})
-        }
-    </style>
+<link rel="stylesheet" href="{% static 'blog.css' %}">
+<style>
+    .my_heading {
+        background-image: url({{ blog.image.url }})
+    }
+</style>
 {% endblock %}
 
 
@@ -14,60 +14,65 @@
 {% block page_subtitle %}{{ blog.subtitle }}{% endblock %}
 
 {% block content %}
-    <div class=" container  d-flex justify-content-center mt-5 ">
-        <div class="card col-lg-8 text-black lead fs-4 p-4 border-0">
-            <p class="card-text">
-                {{ blog.body | safe }}
-            </p>
-        </div>
+<div class=" container  d-flex justify-content-center mt-5 ">
+    <div class="card col-lg-8 text-black lead fs-4 p-4 border-0">
+        <p class="card-text">
+            {{ blog.body | safe }}
+        </p>
     </div>
-    <div class="container col-lg-6 d-flex justify-content-end p-3">
-        <a href="{% url 'edit' id=blog.id %}"><button class="btn btn-success p-2">Edit Post</button></a>
+</div>
+{% if request.user == blog.author %}
+<div class="container col-lg-6 d-flex justify-content-end p-3">
+    <a href="{% url 'edit' id=blog.id %}">
+        <button class="btn btn-success p-2">Edit Post</button>
+    </a>
 
-    </div>
-    {% if request.user.is_authenticated %}
-    <div class="container col-lg-7 d-flex flex-column">
-        <h5 class="card-text text-black fw-bolder ms-1">Comment</h5>
-        <form method="post" enctype="application/x-www-form-urlencoded">
-            {% csrf_token %}
-            <textarea class="form-control mt-2" placeholder="Leave a comment here" name="my_text_area"></textarea>
-            <button class="btn btn-primary col-lg-3 mt-2 p-2 fs-5" type="submit">Submit Comment</button>
-        </form>
-    </div>
-    {% else %}
-         <div class="container col-lg-7 d-flex flex-column">
-        <h5 class="card-text text-black fw-bolder ms-1">Comment</h5>
-        <form method="post" enctype="application/x-www-form-urlencoded">
-            {% csrf_token %}
-            <textarea class="form-control mt-2" placeholder="Please login to comment" name="my_text_area" disabled></textarea>
-            <button class="btn btn-primary col-lg-3 mt-2 p-2 fs-5" type="submit" disabled>Submit Comment</button>
-        </form>
-    </div>
+</div>
+{% endif %}
+{% if request.user.is_authenticated %}
+<div class="container col-lg-7 d-flex flex-column">
+    <h5 class="card-text text-black fw-bolder ms-1">Comment</h5>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        {% csrf_token %}
+        <textarea class="form-control mt-2" placeholder="Leave a comment here" name="my_text_area"></textarea>
+        <button class="btn btn-primary col-lg-3 mt-2 p-2 fs-5" type="submit">Submit Comment</button>
+    </form>
+</div>
+{% else %}
+<div class="container col-lg-7 d-flex flex-column">
+    <h5 class="card-text text-black fw-bolder ms-1">Comment</h5>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        {% csrf_token %}
+        <textarea class="form-control mt-2" placeholder="Please login to comment" name="my_text_area"
+                  disabled></textarea>
+        <button class="btn btn-primary col-lg-3 mt-2 p-2 fs-5" type="submit" disabled>Submit Comment</button>
+    </form>
+</div>
 
-    {% endif %}
+{% endif %}
 
-    {% if not blog.comments.all %}
-        <div class="text-center fw-bolder mt-3 fs-3 "> No comments yet...</div>
+{% if not blog.comments.all %}
+<div class="text-center fw-bolder mt-3 fs-3 "> No comments yet...</div>
 
-    {% else %}
-        {% for comment in blog.comments.all %}
-        <div class="container col-lg-7 commentlist  mt-5 mb-5">
-            <ul style="list-style-type:none;">
-                <li class="mb-4" style="text-decoration:none;">
-                    <div class="first-top d-flex flex-row ms-0 ">
-                        <img src="{{ comment.author.profile_picture.url }}" class="me-1"
-                             style="height:50px;width:50px; border-radius:30px;">
-                        <div class="card-title fs-6 fw-bold mb-2">{{ comment.body }}</div>
-                    </div>
-                    <div class="card-text fs-14 lead ms-5">{{ comment.author }}</div>
-                </li>
+{% else %}
+{% for comment in blog.comments.all %}
+<div class="container col-lg-7 commentlist  mt-5 mb-5">
+    <ul style="list-style-type:none;">
+        <li class="mb-4" style="text-decoration:none;">
+            <div class="first-top d-flex flex-row ms-0 ">
+                <img src="{{ comment.author.profile_picture.url }}" class="me-1"
+                     style="height:50px;width:50px; border-radius:30px;">
+                <div class="card-title fs-6 fw-bold mb-2">{{ comment.body }}</div>
+            </div>
+            <div class="card-text fs-14 lead ms-5">{{ comment.author }}</div>
+        </li>
 
-            </ul>
+    </ul>
 
-        </div>
-        {% endfor %}
+</div>
+{% endfor %}
 
 
-    {% endif %}
+{% endif %}
 
 {% endblock %}

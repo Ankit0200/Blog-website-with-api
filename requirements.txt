@@ -10,3 +10,4 @@ django_allauth
 django-filter
 gunicorn
 cryptography
+pillow
