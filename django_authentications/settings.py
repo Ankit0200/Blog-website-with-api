@@ -98,15 +98,6 @@ WSGI_APPLICATION = 'django_authentications.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Blog app',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Nebsxc@318',
-#         'HOST': 'localhost'
-#     }
-# }
 
 database_url=os.environ.get('DATABASE_URL')
 DATABASES['default'] = dj_database_url.parse(database_url)
@@ -204,7 +195,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ankitdevkota107@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'hlcm ejly eobf uyfr'  # Your Gmail password or app-specific password
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  # Your Gmail password or app-specific password
 
 SIMPLE_jWT = {
     'ACCESS_TOKEN_LIFETIME': Timedelta(minutes=10),
